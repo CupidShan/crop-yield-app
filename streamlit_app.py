@@ -97,7 +97,8 @@ label { font-weight: 500 !important; color: #344054 !important; font-size: 0.87r
 # ── Load model ────────────────────────────────────────────────────────────────
 @st.cache_resource
 def load_model():
-    with open('rf_model.pkl', 'rb') as f:
+    import gzip
+    with gzip.open("rf_model_compressed.pkl.gz", "rb") as f:
         model = pickle.load(f)
     with open('encoders.pkl', 'rb') as f:
         enc = pickle.load(f)
